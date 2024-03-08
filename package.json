@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Backend Practice Project ",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "keywords": [
     "Javascript",
@@ -12,5 +14,8 @@
     "Axios"
   ],
   "author": "ABhinav Kar",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
 }
