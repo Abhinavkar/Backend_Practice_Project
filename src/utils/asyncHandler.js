@@ -13,12 +13,14 @@
 // export default asyncHandler;
 
 // OTHER METHOD foR prODUCTION GRADE
-const asyncHandler = (requestHandler) => (req, res, next) => {
-  Promise.resolve(
-    requestHandler(req, res, next).catch((err) => {
-        // when promise is rejected then it will throw error to next 
-      next(err);
-    })
-  );
+const asyncHandler = (requestHandler) => {
+  return (req, res, next) => {
+    Promise.resolve(
+      requestHandler(req, res, next).catch((err) => {
+        // when promise is rejected then it will throw error to next
+        next(err);
+      })
+    );
+  };
 };
 export default asyncHandler;
