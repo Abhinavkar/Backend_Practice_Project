@@ -66,11 +66,11 @@ userSchema.methods.generateAuthToken = function () {
       username: this.username,
       email: this.email,
       fullname: this.fullname,
-      avatar: this.avatar,
-      coverImage: this.coverImage,
+      //   avatar: this.avatar,
+      //   coverImage: this.coverImage,
     },
-    process.env.JWT_SECRET,
-    { expiresIn: "7d" }
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
   );
 };
 
@@ -78,14 +78,15 @@ userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
       _id: this._id,
-      username: this.username,
-      email: this.email,
-      fullname: this.fullname,
-      avatar: this.avatar,
-      coverImage: this.coverImage,
+      // we store less info in the refresh token
+      //   username: this.username,
+      //   email: this.email,
+      //   fullname: this.fullname,
+      //   avatar: this.avatar,
+      //   coverImage: this.coverImage,
     },
-    process.env.JWT_SECRET,
-    { expiresIn: "30d" }
+    process.env.REFRESH_TOKEN_SECRET,
+    { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }
   );
 };
 
